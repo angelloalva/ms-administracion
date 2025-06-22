@@ -1,0 +1,42 @@
+
+# Configuración de Actuator
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics # Exponer solo endpoints necesarios
+      base-path: /actuator
+  endpoint:
+    health:
+      show-details: when-authorized # Mostrar detalles solo si está autorizado
+      show-components: always
+  health:
+    circuitbreakers:
+      enabled: true
+    ratelimiters:
+      enabled: true
+
+# Info personalizada
+info:
+  app:
+    name: Microservicio de gestion administrativa
+    version: 1.0.0
+    description: Servicio para gestión de sedes,especialidades
+
+
+spring:
+  data:
+    mongodb:
+      #host: mongo
+      host: localhost
+      port: 27017
+      database: neuromotionbd
+      username: neuromotionUser
+      password: TuPasswordSeguro123
+microservices:
+  citas:
+    url: http://localhost:8083
+jwt:
+  secret: rI8uBkhf9POtLKb9STqWmMGaM7+lmhPCK2B3NzE/j9gC1dxJjTfw2EokW4Vj0F3U37cY5Lh+QKnI3fmc1Hnfdw==
+server:
+  port: 8082
